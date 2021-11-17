@@ -1,0 +1,14 @@
+type = "javascript"
+account_id = ""
+workers_dev = true
+name = "overlayed-api"
+route = ""
+zone_id = ""
+compatibility_date = "2021-11-11"
+
+# wrangler.toml
+[build]
+command = "npm run build"
+
+[build.upload]
+format = "service-worker"
