@@ -1,7 +1,6 @@
 type = "javascript"
 account_id = ""
-workers_dev = true
-name = "overlayed-api"
+workers_dev = false
 route = ""
 zone_id = ""
 compatibility_date = "2021-11-11"
@@ -12,3 +11,11 @@ command = "npm run build"
 
 [build.upload]
 format = "service-worker"
+
+[env.prod]
+name = "overlayed-prod"
+route = "auth.overlayed.dev/*"
+
+[env.dev]
+name = "overlayed-dev"
+route = "auth-dev.overlayed.dev/*"

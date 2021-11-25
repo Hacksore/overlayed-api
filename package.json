@@ -1,14 +1,15 @@
 {
   "name": "overlayed-api",
   "version": "1.0.0",
-  "description": "REST API for getting oauth tokens",
+  "description": "REST API for getting Discord OAuth tokens",
   "main": "dist/main.js",
   "scripts": {
     "build": "webpack",
     "start": "miniflare -p 3000 --watch --env .env",
-    "deploy": "wrangler publish"
+    "deploy": "wrangler publish --env dev",
+    "deploy:prod": "wrangler publish --env prod"
   },
-  "author": "Sean Boult <996134+Hacksore@users.noreply.github.com>",
+  "author": "Hacksore",
   "license": "MIT",
   "devDependencies": {
     "cross-env": "^7.0.3",

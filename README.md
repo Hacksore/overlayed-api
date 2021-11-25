@@ -1,2 +1,2 @@
 # overlayed-api
-REST API for getting OAuth tokens from Discord
+REST API for getting Discord OAuth tokens
