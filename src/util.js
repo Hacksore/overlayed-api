@@ -12,15 +12,18 @@ export async function gatherResponse(response) {
   }
 }
 
-const REDIRECT_URI_BASE = process.env.NODE_ENV === "production" ? "https://auth.overlayed.dev" : "http://localhost:3000";
+export const fetchAuthToken = (code, isProd) => {
+  console.log("Getting auth token...");
+  const baseUrl = isProd ? "https://overlayed.dev" : "http://localhost:8000";
 
-export const fetchAuthToken = (code) => {
   const form = new URLSearchParams();
   form.append("client_id", globalThis.CLIENT_ID);
   form.append("client_secret", globalThis.CLIENT_SECRET);
   form.append("grant_type", "authorization_code");
   form.append("code", code); 
-  form.append("redirect_uri", `${REDIRECT_URI_BASE}/oauth/callback`);
+
+  // we can just set this to localhost for now?
+  form.append("redirect_uri", `${baseUrl}/auth`);
 
   return fetch(
     `https://discord.com/api/oauth2/token`,
@@ -34,3 +37,7 @@ export const fetchAuthToken = (code) => {
     }
   );
 };
+
+export function isProd(url) {
+  return url.startsWith("https://auth.");
+}
